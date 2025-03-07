@@ -1,0 +1,81 @@
+class Node:
+    def _init_(self, data, next=None):  # Corrected the constructor name
+        self.data = data
+        self.next = next
+
+class SLL:
+    def _init_(self, head=None, tail=None):  # Corrected the constructor name
+        self.head = head
+        self.tail = tail
+    
+    def IOE(self):
+        data = int(input("Enter data to IOE :- "))
+        nn = Node(data)
+        if self.head is None:
+            self.head = nn
+            self.tail = nn
+        else:
+            self.tail.next = nn
+            self.tail = nn
+    
+    def IOS(self):
+        data = int(input("Enter data to IOS :- "))
+        nn = Node(data)
+        if self.head is None:
+            self.head = nn
+            self.tail = nn
+        else:
+            nn.next = self.head
+            self.head = nn
+    
+    def DOS(self):
+        if self.head is None:
+            print("Empty List")
+        else:
+            if self.head == self.tail:
+                self.head = None
+                self.tail = None
+            else:
+                self.head = self.head.next
+    
+    def DOE(self):
+        if self.head is None:
+            print("Empty List")
+        else:
+            if self.head == self.tail:
+                self.head = None
+                self.tail = None
+            else:
+                t = self.head
+                while t.next != self.tail:
+                    t = t.next
+                t.next = None
+                self.tail = t
+    
+    def Display(self):
+        if self.head is None:
+            print("List is Empty")
+        else:
+            temp = self.head
+            while temp is not None:
+                print(temp.data, "->", end=" ")
+                temp = temp.next
+            print()
+
+s1 = SLL()
+while True:
+    c = int(input("Enter 1.IOE 2.IOS 3.Display 4.DOS 5.DOE 9.Exit\n"))
+    if c == 1:
+        s1.IOE()
+    elif c == 2:
+        s1.IOS()
+    elif c == 3:
+        s1.Display()
+    elif c == 4:
+        s1.DOS()
+    elif c == 5:
+        s1.DOE()
+    elif c == 9:
+        break
+    else:
+        print("Invalid option")
